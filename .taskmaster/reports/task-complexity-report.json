@@ -19,10 +19,10 @@
 		},
 		{
 			"taskId": 22,
-			"taskTitle": "Implement FormKit Integration",
+			"taskTitle": "Implement Vueform Integration",
 			"complexityScore": 6,
 			"recommendedSubtasks": 3,
-			"expansionPrompt": "Break down into subtasks: 1. Install FormKit and Vue plugin. 2. Configure FormKit with JSON schema. 3. Test with a simple form.",
+			"expansionPrompt": "Break down into subtasks: 1. Install Vueform and Vue plugin. 2. Configure Vueform with JSON schema. 3. Test with a simple form.",
 			"reasoning": "The task requires integration and configuration of a third-party library, which adds complexity. Testing validation and submission also increases the complexity."
 		},
 		{

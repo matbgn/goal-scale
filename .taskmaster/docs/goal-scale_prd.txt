@@ -30,17 +30,17 @@ Goal scale is a SPA app that ask a series of questions to define and achive the 
 - **No data persitance**: everything is covered by import/export capability
 - **Internationalization**: Support EN, FR, DE locales (Swiss German standards)
 - **Package management**: Use pnpm for nuxt project directories
-- **Form library**: FormKit using JSON schema definition to guarantee maintenance. (See Appendix)
+- **Form library**: Vueform using JSON schema definition to guarantee maintenance. (See Appendix)
 - **UI Theme**: Use TailwindCSS and Lucide.dev icons
 - **Deployment**: Single HTML/JS bundle
 
 # Development Roadmap  
 - Create a hello world page with skeleton theme
-- Integrate the two first questions thanks to FormKit
+- Integrate the two first questions thanks to Vueform
 - Implement export fonction at any step
 - Implement import step at the beginning of the form
 - Integrate all other questions
 
 # Appendix  
-- FormKit Schema definition: https://formkit.com/essentials/schema#form-generation-example
+- Vueform Schema definition: https://vueform.com/docs/rendering-forms#using-schema-object
 </PRD>
