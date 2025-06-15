@@ -37,7 +37,7 @@
               2
             ],
             "details": "Install package via 'pnpm add lucide-vue-next'. Register icons as a Nuxt plugin or import directly in components.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 4,
@@ -178,7 +178,7 @@
     ],
     "metadata": {
       "created": "2025-06-15T12:16:43.216Z",
-      "updated": "2025-06-15T14:54:06.027Z",
+      "updated": "2025-06-15T15:04:44.144Z",
       "description": "Tasks for master context"
     }
   }
