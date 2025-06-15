@@ -7,3 +7,7 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { LucideRocket } from 'lucide-vue-next';
+</script>
