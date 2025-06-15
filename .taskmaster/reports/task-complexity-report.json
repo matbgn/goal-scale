@@ -1,0 +1,93 @@
+{
+	"meta": {
+		"generatedAt": "2025-06-15T14:25:26.020Z",
+		"tasksAnalyzed": 10,
+		"totalTasks": 10,
+		"analysisCount": 10,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": false
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 21,
+			"taskTitle": "Setup Nuxt.js Project",
+			"complexityScore": 4,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Break down the setup into subtasks: 1. Initialize Nuxt.js project with pnpm. 2. Install and configure TailwindCSS. 3. Add Lucide icons. 4. Verify setup with a 'Hello World' page.",
+			"reasoning": "The task involves multiple straightforward steps, each with clear instructions. The complexity is moderate due to the need for configuration and verification."
+		},
+		{
+			"taskId": 22,
+			"taskTitle": "Implement FormKit Integration",
+			"complexityScore": 6,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Install FormKit and Vue plugin. 2. Configure FormKit with JSON schema. 3. Test with a simple form.",
+			"reasoning": "The task requires integration and configuration of a third-party library, which adds complexity. Testing validation and submission also increases the complexity."
+		},
+		{
+			"taskId": 23,
+			"taskTitle": "Create Initial Form Questions (GOAL & PURPOSES)",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Define JSON schema for GOAL and PURPOSES. 2. Render questions in UI. 3. Test navigation and validation.",
+			"reasoning": "The task involves defining schemas and ensuring UI rendering works, which is moderately complex due to the need for validation and navigation."
+		},
+		{
+			"taskId": 24,
+			"taskTitle": "Implement Export Functionality",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Add export button. 2. Serialize form data to JSON. 3. Implement file download.",
+			"reasoning": "The task involves data serialization and file handling, which is moderately complex but well-defined."
+		},
+		{
+			"taskId": 25,
+			"taskTitle": "Implement Import Functionality",
+			"complexityScore": 6,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Add import button. 2. Parse and populate form data. 3. Validate imported data.",
+			"reasoning": "The task involves parsing and validating external data, which adds complexity compared to export functionality."
+		},
+		{
+			"taskId": 26,
+			"taskTitle": "Integrate Remaining Questions",
+			"complexityScore": 7,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Define JSON schema for remaining questions. 2. Render questions in UI. 3. Test sequential navigation.",
+			"reasoning": "The task involves handling multiple questions and ensuring smooth navigation, which increases complexity due to the scope."
+		},
+		{
+			"taskId": 27,
+			"taskTitle": "Add Internationalization Support",
+			"complexityScore": 8,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Configure Nuxt.js for i18n. 2. Translate form labels and messages. 3. Add language switcher.",
+			"reasoning": "The task involves configuring i18n and managing translations, which is complex due to the need for multiple language support."
+		},
+		{
+			"taskId": 28,
+			"taskTitle": "Implement PDF Report Generation",
+			"complexityScore": 7,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Choose and set up PDF library. 2. Format form data into PDF. 3. Implement download button.",
+			"reasoning": "The task involves integrating a PDF library and formatting data, which is complex due to the need for precise layout and formatting."
+		},
+		{
+			"taskId": 29,
+			"taskTitle": "Optimize Deployment Bundle",
+			"complexityScore": 6,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Configure static site generation. 2. Optimize assets. 3. Test production build.",
+			"reasoning": "The task involves optimization and production configuration, which is moderately complex due to the need for performance tuning."
+		},
+		{
+			"taskId": 30,
+			"taskTitle": "Final Testing and QA",
+			"complexityScore": 9,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down into subtasks: 1. Test form navigation and validation. 2. Verify PDF generation and import/export. 3. Check internationalization.",
+			"reasoning": "The task involves comprehensive end-to-end testing, which is highly complex due to the scope and dependencies on multiple features."
+		}
+	]
+}

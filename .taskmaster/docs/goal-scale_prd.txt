@@ -31,7 +31,7 @@ Goal scale is a SPA app that ask a series of questions to define and achive the 
 - **Internationalization**: Support EN, FR, DE locales (Swiss German standards)
 - **Package management**: Use pnpm for nuxt project directories
 - **Form library**: FormKit using JSON schema definition to guarantee maintenance. (See Appendix)
-- **UI Theme**: Use Skeleton design system to allow easy theme changes. (See Appendix)
+- **UI Theme**: Use TailwindCSS and Lucide.dev icons
 - **Deployment**: Single HTML/JS bundle
 
 # Development Roadmap  
@@ -43,5 +43,4 @@ Goal scale is a SPA app that ask a series of questions to define and achive the 
 
 # Appendix  
 - FormKit Schema definition: https://formkit.com/essentials/schema#form-generation-example
-- Design System library: https://github.com/skeletonlabs/skeleton
 </PRD>
