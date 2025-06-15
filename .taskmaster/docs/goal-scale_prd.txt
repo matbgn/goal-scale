@@ -1,0 +1,47 @@
+<context>
+# Overview  
+Goal scale is a SPA app that ask a series of questions to define and achive the goals of the end user.
+
+# Core Features  
+- Ask the following questions in this particular order:
+    - GOAL (who I choose to be / what I choose to be)
+    - PURPOSES (what is the main motivations for carrying out the goal)
+    - POLICIES / PRINCIPLES (how I choose to become it)
+    - IDEAL SCENE (what I choose to have when I achieve this goal)
+    - CURRENT SCENE (what I have now)
+    - DEVIATIONS (list of differences between the current image and the ideal image)
+    - SITUATION (the main deviation from the ideal image)
+    - VALUABLE FINAL PRODUCT(S) (the result needed to correct the situation — something that can be exchanged outside the area for something in return)
+    - STATISTICS (the figures to be achieved to correct the situation)
+    - WHY (the main cause(s) of the situation)
+    - PLAN (brilliant idea to correct the situation)
+    - PROGRAM (the big solution to a problem given by a defined plan. The little problems inside that big solution are solved by projects and inside the projects the littler-littler problems are solved by orders)
+    - PROJECTS (these are a series of guiding steps which if followed will result in a full and successful accomplishment of the program target)
+    - ORDERS (what are issued to get the actions called done so that a valuable final product results)
+
+# User Experience  
+- The user can print a final PDF report of his final plan to achieve his goal
+- The user can export, at any step, the actual already filled form to save it
+- The user can import an already full or not filled form to continue or edit it
+</context>
+<PRD>
+# Technical Architecture  
+- **Main framework**: Nuxt (Vue.js)
+- **No data persitance**: everything is covered by import/export capability
+- **Internationalization**: Support EN, FR, DE locales (Swiss German standards)
+- **Package management**: Use pnpm for nuxt project directories
+- **Form library**: FormKit using JSON schema definition to guarantee maintenance. (See Appendix)
+- **UI Theme**: Use Skeleton design system to allow easy theme changes. (See Appendix)
+- **Deployment**: Single HTML/JS bundle
+
+# Development Roadmap  
+- Create a hello world page with skeleton theme
+- Integrate the two first questions thanks to FormKit
+- Implement export fonction at any step
+- Implement import step at the beginning of the form
+- Integrate all other questions
+
+# Appendix  
+- FormKit Schema definition: https://formkit.com/essentials/schema#form-generation-example
+- Design System library: https://github.com/skeletonlabs/skeleton
+</PRD>

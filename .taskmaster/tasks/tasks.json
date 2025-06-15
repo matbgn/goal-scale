@@ -1,0 +1,140 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 11,
+        "title": "Setup Nuxt.js Project with pnpm",
+        "description": "Initialize a Nuxt.js project using pnpm as the package manager and configure the basic project structure.",
+        "details": "1. Install pnpm globally if not already installed. 2. Create a new Nuxt.js project using `pnpm create nuxt-app`. 3. Configure the project to use the specified dependencies (FormKit, Skeleton design system). 4. Set up basic project structure and ensure it runs locally.",
+        "testStrategy": "Verify the project runs locally by starting the development server and accessing the default Nuxt.js page.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 12,
+        "title": "Integrate Skeleton Design System",
+        "description": "Add and configure the Skeleton design system for theming and UI components.",
+        "details": "1. Install Skeleton design system via pnpm. 2. Configure Nuxt.js to use Skeleton by updating the `nuxt.config.js` file. 3. Test the integration by adding a basic Skeleton component to the hello world page.",
+        "testStrategy": "Check that the Skeleton components render correctly on the hello world page and that the theme can be applied.",
+        "priority": "high",
+        "dependencies": [
+          11
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Create Hello World Page with Skeleton Theme",
+        "description": "Develop a basic hello world page using the Skeleton design system to validate the setup.",
+        "details": "1. Create a new page in the `pages` directory. 2. Use Skeleton components to style the page. 3. Ensure the page is accessible via the development server.",
+        "testStrategy": "Verify the hello world page loads correctly and displays Skeleton-styled components.",
+        "priority": "medium",
+        "dependencies": [
+          11,
+          12
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Integrate FormKit for Form Handling",
+        "description": "Set up FormKit for handling form inputs and validation using JSON schema.",
+        "details": "1. Install FormKit via pnpm. 2. Configure FormKit in `nuxt.config.js`. 3. Create a basic form schema for testing. 4. Test form rendering and validation.",
+        "testStrategy": "Validate that forms render correctly and handle input validation as per the JSON schema.",
+        "priority": "high",
+        "dependencies": [
+          11
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Implement First Two Questions (GOAL and PURPOSES)",
+        "description": "Develop the first two questions of the form (GOAL and PURPOSES) using FormKit.",
+        "details": "1. Define JSON schemas for the GOAL and PURPOSES questions. 2. Create corresponding FormKit forms. 3. Test form submission and validation.",
+        "testStrategy": "Ensure the forms for GOAL and PURPOSES render correctly and validate inputs.",
+        "priority": "medium",
+        "dependencies": [
+          14
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 16,
+        "title": "Implement Export Functionality",
+        "description": "Add functionality to export the form data at any step.",
+        "details": "1. Implement a function to serialize form data to JSON. 2. Add a button to trigger the export. 3. Test exporting data from the form.",
+        "testStrategy": "Verify that exported data matches the current form state and can be saved locally.",
+        "priority": "medium",
+        "dependencies": [
+          14
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 17,
+        "title": "Implement Import Functionality",
+        "description": "Add functionality to import previously saved form data.",
+        "details": "1. Implement a function to parse imported JSON data. 2. Add a file upload component for importing. 3. Test importing data into the form.",
+        "testStrategy": "Ensure imported data populates the form correctly and maintains validation.",
+        "priority": "medium",
+        "dependencies": [
+          16
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Integrate Remaining Questions",
+        "description": "Develop the remaining questions of the form using FormKit.",
+        "details": "1. Define JSON schemas for all remaining questions. 2. Create corresponding FormKit forms. 3. Test form submission and validation for each question.",
+        "testStrategy": "Validate that all forms render correctly and handle input validation.",
+        "priority": "medium",
+        "dependencies": [
+          15
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Implement PDF Report Generation",
+        "description": "Add functionality to generate a PDF report of the final plan.",
+        "details": "1. Use a library like jsPDF or PDFKit to generate PDFs. 2. Format the form data into a printable layout. 3. Test PDF generation and download.",
+        "testStrategy": "Verify the PDF contains all form data and is formatted correctly.",
+        "priority": "low",
+        "dependencies": [
+          18
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Add Internationalization Support (EN, FR, DE)",
+        "description": "Implement multi-language support for the application.",
+        "details": "1. Configure Nuxt.js for internationalization. 2. Add language files for EN, FR, and DE. 3. Test language switching and translations.",
+        "testStrategy": "Ensure all UI elements and form questions are translated correctly in all supported languages.",
+        "priority": "low",
+        "dependencies": [
+          11
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-06-15T12:16:43.216Z",
+      "updated": "2025-06-15T12:27:52.659Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
