@@ -89,7 +89,7 @@
               1
             ],
             "details": "Define form fields, validation rules, and layout in a JSON schema. Import and initialize Vueform in the application with this configuration.",
-            "status": "pending"
+            "status": "done"
           }
         ]
       },
@@ -104,7 +104,37 @@
           22
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define JSON Schema",
+            "description": "Create JSON schema definitions for GOAL and PURPOSES data structures.",
+            "dependencies": [],
+            "details": "Specify required fields, data types, and validation rules for GOAL and PURPOSES objects to ensure structured data handling.",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Implement UI Rendering",
+            "description": "Develop UI components to dynamically render questions based on the schema.",
+            "dependencies": [
+              1
+            ],
+            "details": "Use the defined JSON schema to generate and display interactive question elements in the user interface.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Test Navigation and Validation",
+            "description": "Verify user navigation flow and input validation against schema rules.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Conduct end-to-end testing to ensure seamless navigation between questions and enforce validation constraints defined in the schema.",
+            "status": "pending"
+          }
+        ]
       },
       {
         "id": 24,
@@ -207,7 +237,7 @@
     ],
     "metadata": {
       "created": "2025-06-15T12:16:43.216Z",
-      "updated": "2025-06-15T19:53:41.493Z",
+      "updated": "2025-06-15T20:24:28.869Z",
       "description": "Tasks for master context"
     }
   }
