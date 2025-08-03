@@ -220,10 +220,6 @@ const printToPDF = async () => {
     if (element.type === 'static' && (element.tag === 'h2' || element.tag === 'p')) {
       htmlContent += `<div class="pdf-section"><${element.tag} class="pdf-keep-with-next">${element.content}</${element.tag}></div>`;
     }
-    // Skip "list" elements in schema
-    else if (element.type === 'list') {
-      continue;
-    }
     // Labeled elements with value
     else if (element.label && value !== undefined && value !== null && value !== '') {
       // Do NOT print the element label as a heading in the PDF.
@@ -234,12 +230,12 @@ const printToPDF = async () => {
         htmlContent += '<ul class="pdf-list">';
         value.forEach(item => {
           if (typeof item === 'object' && item !== null) {
-            if (item.text_1 !== undefined) {
-              htmlContent += `<li><strong>${item.text_1}</strong></li>`;
-            } else if (item.value !== undefined) {
-              htmlContent += `<li><strong>${item.value}</strong></li>`;
-            } else {
-              htmlContent += `<li><strong>${JSON.stringify(item)}</strong></li>`;
+            const keys = Object.keys(item);
+            if (keys.length > 0) {
+              const itemValue = item[keys[0]];
+              if (itemValue !== undefined && itemValue !== null && itemValue !== '') {
+                htmlContent += `<li><strong>${itemValue}</strong></li>`;
+              }
             }
           } else if (item !== undefined && item !== null && item !== '') {
             htmlContent += `<li><strong>${item}</strong></li>`;
