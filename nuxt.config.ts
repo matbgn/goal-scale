@@ -14,5 +14,12 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+  },
+
+  // GitHub Pages: static SPA with project base path
+  ssr: false,
+  app: {
+    baseURL: '/goal-scale/',
+    buildAssetsDir: 'assets'
   }
 })
