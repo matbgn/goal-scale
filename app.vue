@@ -133,8 +133,10 @@ const printToPDF = async () => {
     }
     // Labeled elements with value
     else if (element.label && value !== undefined && value !== null && value !== '') {
+      // Do NOT print the element label as a heading in the PDF.
+      // Only render the user's answer/value so that static titles and descriptive paragraphs
+      // from the schema remain, without additional input labels.
       htmlContent += `<div class="pdf-section">`;
-      htmlContent += `<h2 class="pdf-keep-with-next">${element.label}</h2>`;
       if (Array.isArray(value)) {
         htmlContent += '<ul class="pdf-list">';
         value.forEach(item => {
@@ -328,7 +330,7 @@ const printToPDF = async () => {
 
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-    <h1 class="text-4xl font-bold text-blue-500 mb-4">Goal Scale Report</h1>
+    <h1 class="text-4xl font-bold text-blue-500 mb-4">Goal Scale</h1>
     <div id="form-container">
       <ClientOnly>
         <Vueform v-bind="cleanedFormSchema" v-model="formData" />
