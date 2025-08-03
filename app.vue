@@ -419,7 +419,7 @@ const printToPDF = async () => {
   }
 
   const ts = getTimestamp();
-  pdf.save(`goal-plan-${ts}.pdf`);
+  pdf.save(`goal-scale-report-${ts}.pdf`);
  
   // Cleanup
   document.body.removeChild(printContent);
