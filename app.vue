@@ -422,16 +422,16 @@ const printToPDF = async () => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-    <h1 class="text-4xl font-bold text-blue-500 mb-4">Goal Scale</h1>
-    <div id="form-container">
+  <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
+    <h1 class="text-3xl md:text-4xl font-bold text-blue-500 mb-4 text-center">Goal Scale</h1>
+    <div id="form-container" class="w-full max-w-2xl md:max-w-5xl mb-6">
       <ClientOnly>
         <Vueform ref="goalForm" v-bind="cleanedFormSchema" v-model="formData" />
       </ClientOnly>
     </div>
 
     <!-- Actions row: buttons horizontally with small gap, print first -->
-    <div class="flex items-center gap-3 mb-4">
+    <div class="flex flex-wrap justify-center items-center gap-3 mb-4">
       <button
         @click="printToPDF"
         :disabled="isPrinting"
@@ -499,5 +499,29 @@ const printToPDF = async () => {
   display: inline-block;
   border-right-color: transparent !important;
   animation: spin 0.8s linear infinite;
+}
+#form-container .vueform-steps-wrapper {
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+/* Responsive styles for the stepper */
+@media (max-width: 640px) {
+  .vueform-steps-wrapper {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .vueform-step {
+    padding-bottom: 1rem;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .vueform-step-label {
+    margin-top: 0.5rem;
+    white-space: normal;
+    text-align: center;
+  }
 }
 </style>
