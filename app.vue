@@ -276,7 +276,7 @@ const printToPDF = async () => {
 
   // helper to render a node to canvas at fixed scale
   const renderNode = (node) => html2canvas(node, {
-    scale: 3, // higher DPI to reduce rounding/cropping artifacts
+    scale: 2, // higher DPI to reduce rounding/cropping artifacts
     useCORS: true,
     allowTaint: true,
     backgroundColor: '#ffffff',
@@ -305,10 +305,10 @@ const printToPDF = async () => {
       const titleRatio = titleCanvas.height / titleCanvas.width;
       const placedTitleHeight = +(contentWidth * titleRatio + 2.2).toFixed(2);
 
-      const titleData = titleCanvas.toDataURL('image/png');
+      const titleData = titleCanvas.toDataURL('image/jpeg', 0.9);
       // Extra nudge down to avoid any top-edge clipping from PDF renderer
       const titleY = +(cursorMmY + 1.4).toFixed(2);
-      pdf.addImage(titleData, 'PNG', margin, titleY, contentWidth, placedTitleHeight);
+      pdf.addImage(titleData, 'JPEG', margin, titleY, contentWidth, placedTitleHeight);
       // Reserve spacing after title (match CSS 10mm)
       cursorMmY = +(titleY + placedTitleHeight + 10).toFixed(2);
       continue;
@@ -334,12 +334,12 @@ const printToPDF = async () => {
 
     // If whole section fits, place it
     if (secHeightMm <= (pageHeight - cursorMmY - margin)) {
-      const data = secCanvas.toDataURL('image/png');
+      const data = secCanvas.toDataURL('image/jpeg', 0.9);
       // Use aspect ratio from the raster to compute placed height; add small tolerance
       const secRatio = secCanvas.height / secCanvas.width;
       const remainingMm = pageHeight - cursorMmY - margin - 1.0; // keep 1mm safety from bottom
       const placedHeightMm = Math.min(+(contentWidth * secRatio + 0.8).toFixed(2), remainingMm);
-      pdf.addImage(data, 'PNG', margin, +cursorMmY.toFixed(2), contentWidth, placedHeightMm);
+      pdf.addImage(data, 'JPEG', margin, +cursorMmY.toFixed(2), contentWidth, placedHeightMm);
       cursorMmY = +(cursorMmY + placedHeightMm + 2).toFixed(2); // small spacing
       continue;
     }
@@ -377,8 +377,8 @@ const printToPDF = async () => {
       const sliceRatio = sliceCanvas.height / sliceCanvas.width;
       const remainingMmForSlice = pageHeight - cursorMmY - margin - 1.0; // keep 1mm safety from bottom
       const placedHeightMm = Math.min(+(contentWidth * sliceRatio + 0.8).toFixed(2), remainingMmForSlice);
-      const pageData = sliceCanvas.toDataURL('image/png');
-      pdf.addImage(pageData, 'PNG', margin, +cursorMmY.toFixed(2), contentWidth, placedHeightMm);
+      const pageData = sliceCanvas.toDataURL('image/jpeg', 0.9);
+      pdf.addImage(pageData, 'JPEG', margin, +cursorMmY.toFixed(2), contentWidth, placedHeightMm);
 
       drawnPx += adjustedSlicePx;
       cursorMmY = +(cursorMmY + placedHeightMm).toFixed(2);
@@ -405,7 +405,7 @@ const printToPDF = async () => {
     // Restore original style
     footerEl.setAttribute('style', prevCss);
     const footerRatio = footerCanvas.height / footerCanvas.width;
-    const footerData = footerCanvas.toDataURL('image/png');
+    const footerData = footerCanvas.toDataURL('image/jpeg', 0.9);
     const placedFooterHeight = +(contentWidth * footerRatio + 2.0).toFixed(2);
     // If insufficient space on current page, move footer to fresh page
     const remainingForFooter = pageHeight - cursorMmY - margin;
@@ -415,7 +415,7 @@ const printToPDF = async () => {
     }
     // Place footer anchored near bottom with 1.4mm safety
     const footerY = Math.min(pageHeight - margin - placedFooterHeight - 1.4, Math.max(cursorMmY, margin));
-    pdf.addImage(footerData, 'PNG', margin, +footerY.toFixed(2), contentWidth, placedFooterHeight);
+    pdf.addImage(footerData, 'JPEG', margin, +footerY.toFixed(2), contentWidth, placedFooterHeight);
   }
 
   const ts = getTimestamp();
