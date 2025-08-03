@@ -33,6 +33,37 @@ const cleanedFormSchema = computed(() => {
 
   return schema;
 });
+const exportJson = () => {
+  try {
+    // Collect current form values (already bound via v-model="formData")
+    const data = {
+      schema: cleanedFormSchema.value, // normalized schema (no builder, steps moved)
+      values: formData.value ?? {}
+    };
+
+    const json = JSON.stringify(data, null, 2);
+
+    // Build a filename with timestamp
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const filename = `goal-scale-export-${ts}.json`;
+
+    // Trigger browser download
+    const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    // For Firefox it needs to be added to the DOM
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (e) {
+    // Basic safety; optionally surface to user via toast later
+    // eslint-disable-next-line no-console
+    console.error('Failed to export JSON', e);
+  }
+};
 
 const printToPDF = async () => {
   if (isPrinting.value) return;
@@ -336,17 +367,27 @@ const printToPDF = async () => {
         <Vueform v-bind="cleanedFormSchema" v-model="formData" />
       </ClientOnly>
     </div>
-    <div class="flex items-center mb-4">
+
+    <!-- Actions row: buttons horizontally with small gap, print first -->
+    <div class="flex items-center gap-3 mb-4">
       <button
         @click="printToPDF"
         :disabled="isPrinting"
-        class="ml-4 px-3 py-2 bg-blue-500 text-white rounded-lg flex items-center gap-2 transition-opacity hover:opacity-90 hover:cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+        class="px-3 py-2 bg-blue-500 text-white rounded-lg flex items-center gap-2 transition-opacity hover:opacity-90 hover:cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
       >
         <LucidePrinter class="w-5 h-5" />
         <span>Print to PDF</span>
         <span v-if="isPrinting" class="inline-flex items-center ml-2">
           <span class="spinner w-4 h-4 border-2 border-white/60 border-t-white rounded-full animate-spin"></span>
         </span>
+      </button>
+
+      <button
+        @click="exportJson"
+        class="px-3 py-2 bg-emerald-600 text-white rounded-lg flex items-center gap-2 transition-opacity hover:opacity-90 hover:cursor-pointer"
+      >
+        <LucideRocket class="w-5 h-5" />
+        <span>Export JSON</span>
       </button>
     </div>
   </div>
