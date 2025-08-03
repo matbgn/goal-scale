@@ -34,6 +34,18 @@ const cleanedFormSchema = computed(() => {
 
   return schema;
 });
+const getTimestamp = () => {
+  const now = new Date();
+  // Format to 'YYYY-MM-DD_HH-mm-ss'
+  const Y = now.getFullYear();
+  const M = String(now.getMonth() + 1).padStart(2, '0');
+  const D = String(now.getDate()).padStart(2, '0');
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const s = String(now.getSeconds()).padStart(2  , '0');
+  return `${Y}-${M}-${D}_${h}-${m}-${s}`;
+};
+
 const exportJson = () => {
   try {
     // Collect current form values (already bound via v-model="formData")
@@ -45,7 +57,7 @@ const exportJson = () => {
     const json = JSON.stringify(data, null, 2);
 
     // Build a filename with timestamp
-    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const ts = getTimestamp();
     const filename = `goal-scale-export-${ts}.json`;
 
     // Trigger browser download
@@ -248,7 +260,7 @@ const printToPDF = async () => {
       htmlContent += `</div>`;
     }
   }
-  htmlContent += `<p class="pdf-footer"><i>Generated on: ${new Date().toLocaleString()}</i></p></div>`;
+  htmlContent += `<p class="pdf-footer"><i>Generated on: ${getTimestamp()}</i></p></div>`;
   printContent.innerHTML = htmlContent;
 
   // Strategy change:
@@ -406,7 +418,8 @@ const printToPDF = async () => {
     pdf.addImage(footerData, 'PNG', margin, +footerY.toFixed(2), contentWidth, placedFooterHeight);
   }
 
-  pdf.save("goal-plan.pdf");
+  const ts = getTimestamp();
+  pdf.save(`goal-plan-${ts}.pdf`);
  
   // Cleanup
   document.body.removeChild(printContent);
