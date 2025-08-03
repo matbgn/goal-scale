@@ -89,7 +89,7 @@
               1
             ],
             "details": "Define form fields, validation rules, and layout in a JSON schema. Import and initialize Vueform in the application with this configuration.",
-            "status": "done"
+            "status": "in-progress"
           }
         ]
       },
