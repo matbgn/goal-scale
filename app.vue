@@ -1,9 +1,10 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { LucideRocket, LucidePrinter } from "lucide-vue-next";
 import goalFormSchema from '@/schema/goalFormSchema';
 
 const isPrinting = ref(false);
+const goalForm = ref(null);
 
 const formData = ref({});
 
@@ -63,6 +64,67 @@ const exportJson = () => {
     // eslint-disable-next-line no-console
     console.error('Failed to export JSON', e);
   }
+};
+
+const importJson = (event) => {
+  const file = event.target.files[0];
+  if (!file) {
+    console.log('No file selected.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      console.log('File read successfully. Parsing JSON...');
+      const data = JSON.parse(e.target.result);
+      console.log('Parsed data:', data);
+
+      if (data && data.values) {
+        console.log('Found "values" key. Preparing to import:', data.values);
+        // Clear the existing form data by replacing it with an empty object
+        formData.value = {};
+        
+        // Use a timeout to allow the DOM to update after clearing
+        setTimeout(() => {
+          console.log('Assigning new values...');
+          // Create a new object to avoid potential reactivity issues with the old one
+          const newValues = { ...data.values };
+          formData.value = newValues;
+          console.log('Import complete. Final formData:', JSON.parse(JSON.stringify(formData.value)));
+
+          // Try to force a re-render of the Vueform component
+          nextTick(() => {
+            if (goalForm.value && typeof goalForm.value.reset === 'function') {
+              console.log('Attempting to reset Vueform...');
+              goalForm.value.reset();
+              
+              // As a fallback, let's also try updating the model directly on the component instance
+              // This can sometimes be more effective if the component has its own internal state management
+              goalForm.value.update(formData.value);
+              console.log('Vueform reset and update called.');
+            } else {
+              console.warn('Could not find goalForm ref or its reset/update method.');
+            }
+          });
+        }, 0);
+
+      } else {
+        console.error("Import failed: Invalid JSON format, 'values' key not found.");
+      }
+    } catch (err) {
+      console.error("Import failed: Could not parse JSON file.", err);
+    }
+  };
+  reader.onerror = (err) => {
+    console.error('Error reading file:', err);
+  };
+  reader.readAsText(file);
+};
+
+const importInput = ref(null);
+const triggerImport = () => {
+  importInput.value?.click();
 };
 
 const printToPDF = async () => {
@@ -364,7 +426,7 @@ const printToPDF = async () => {
     <h1 class="text-4xl font-bold text-blue-500 mb-4">Goal Scale</h1>
     <div id="form-container">
       <ClientOnly>
-        <Vueform v-bind="cleanedFormSchema" v-model="formData" />
+        <Vueform ref="goalForm" v-bind="cleanedFormSchema" v-model="formData" />
       </ClientOnly>
     </div>
 
@@ -389,6 +451,15 @@ const printToPDF = async () => {
         <LucideRocket class="w-5 h-5" />
         <span>Export JSON</span>
       </button>
+      
+      <button
+        @click="triggerImport"
+        class="px-3 py-2 bg-gray-600 text-white rounded-lg flex items-center gap-2 transition-opacity hover:opacity-90 hover:cursor-pointer"
+      >
+        <LucideRocket class="w-5 h-5" />
+        <span>Import JSON</span>
+      </button>
+      <input type="file" @change="importJson" accept=".json" class="hidden" ref="importInput" />
     </div>
   </div>
 </template>
