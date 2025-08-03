@@ -446,7 +446,7 @@ const printToPDF = async () => {
 
       <button
         @click="exportJson"
-        class="px-3 py-2 bg-emerald-600 text-white rounded-lg flex items-center gap-2 transition-opacity hover:opacity-90 hover:cursor-pointer"
+        class="px-3 py-2 bg-[#07bf9b] text-white rounded-lg flex items-center gap-2 transition-opacity hover:opacity-90 hover:cursor-pointer"
       >
         <LucideRocket class="w-5 h-5" />
         <span>Export JSON</span>

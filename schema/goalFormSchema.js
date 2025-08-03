@@ -20,12 +20,12 @@ export default {
         label: "Paragraph"
       }
     },
-    text: {
-      name: "text",
-      type: "text",
+    textarea_goal: {
+      name: "textarea_goal",
+      type: "textarea",
       builder: {
-        type: "text",
-        label: "Text input"
+        type: "textarea",
+        label: "Textarea"
       },
       rules: [
         "required"
@@ -99,14 +99,32 @@ export default {
         label: "Paragraph"
       }
     },
-    textarea_2: {
-      name: "textarea_2",
-      type: "textarea",
-      label: "Define your policies or principles",
+    policiesNestedList: {
+      name: "policiesNestedList",
+      type: "list",
+      element: {
+        type: "object",
+        name: "policy_container",
+        builder: {
+          type: "container"
+        },
+        schema: {
+          policy_text: {
+            name: "policy_text",
+            type: "text",
+            label: "Define a policy or principle",
+            builder: {
+              type: "text",
+              label: "Text"
+            }
+          }
+        }
+      },
       builder: {
-        type: "textarea",
-        label: "Textarea"
-      }
+        type: "nestedList",
+        label: "Nested list"
+      },
+      label: "Define your policies or principles"
     },
     h2_3: {
       name: "h2_3",
@@ -247,15 +265,18 @@ export default {
         label: "Paragraph"
       }
     },
-    textarea_7: {
-      name: "textarea_7",
-      type: "textarea",
-      label: "Define your valuable final product(s)",
-      builder: {
-        type: "textarea",
-        label: "Textarea"
-      }
-    },
+    list_7: {
+          name: "list_7",
+          type: "list",
+          element: {
+            type: "text"
+          },
+          label: "Define your valuable final product(s)",
+          builder: {
+            type: "list",
+            label: "List"
+          }
+        },
     h2_8: {
       name: "h2_8",
       type: "static",
@@ -276,15 +297,18 @@ export default {
         label: "Paragraph"
       }
     },
-    textarea_8: {
-      name: "textarea_8",
-      type: "textarea",
-      label: "Define the statistics",
-      builder: {
-        type: "textarea",
-        label: "Textarea"
-      }
-    },
+    list_8: {
+          name: "list_8",
+          type: "list",
+          element: {
+            type: "text"
+          },
+          label: "Define the statistics",
+          builder: {
+            type: "list",
+            label: "List"
+          }
+        },
     h2_9: {
       name: "h2_9",
       type: "static",
@@ -305,15 +329,18 @@ export default {
         label: "Paragraph"
       }
     },
-    textarea_9: {
-      name: "textarea_9",
-      type: "textarea",
-      label: "Explain the cause(s)",
-      builder: {
-        type: "textarea",
-        label: "Textarea"
-      }
-    },
+    list_9: {
+          name: "list_9",
+          type: "list",
+          element: {
+            type: "text"
+          },
+          label: "Explain the cause(s)",
+          builder: {
+            type: "list",
+            label: "List"
+          }
+        },
     h2_10: {
       name: "h2_10",
       type: "static",
@@ -328,7 +355,7 @@ export default {
       name: "p_10",
       type: "static",
       tag: "p",
-      content: "<div>Brilliant idea to correct the situation</div>",
+      content: "<div>Brilliant idea to correct the situation<br><br>Principles:<br>1. Afterwards, we will refine this plan by desining a PROGRAM which will be our big solution.<br>2. The little problems inside that big solution are then solved by PROJECTS.<br>3. Inside the projects the littler-littler problems are solved by COMMANDS.</div>",
       builder: {
         type: "p",
         label: "Paragraph"
@@ -357,7 +384,7 @@ export default {
       name: "p_11",
       type: "static",
       tag: "p",
-      content: "<div>The big solution to a problem given by a defined plan. The little problems inside that big solution are solved by projects and inside the projects the littler-littler problems are solved by orders</div>",
+      content: "<div>The big solution to a problem given by a defined plan.</div>",
       builder: {
         type: "p",
         label: "Paragraph"
@@ -411,7 +438,7 @@ export default {
       name: "h2_13",
       type: "static",
       tag: "h2",
-      content: "ORDERS",
+      content: "COMMANDS",
       builder: {
         type: "h2",
         label: "H2 header"
@@ -448,7 +475,7 @@ export default {
         elements: [
           "h2",
           "p",
-          "text"
+          "textarea_goal"
         ],
         builder: {
           type: "steps"
@@ -470,7 +497,7 @@ export default {
         elements: [
           "h2_2",
           "p_2",
-          "textarea_2"
+          "policiesNestedList"
         ],
         builder: {
           type: "steps"
@@ -525,7 +552,7 @@ export default {
         elements: [
           "h2_7",
           "p_7",
-          "textarea_7"
+          "list_7"
         ],
         builder: {
           type: "steps"
@@ -536,7 +563,7 @@ export default {
         elements: [
           "h2_8",
           "p_8",
-          "textarea_8"
+          "list_8"
         ],
         builder: {
           type: "steps"
@@ -547,7 +574,7 @@ export default {
         elements: [
           "h2_9",
           "p_9",
-          "textarea_9"
+          "list_9"
         ],
         builder: {
           type: "steps"
